@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Spreader Log (Companion)</string>
+    <string name="add_job">Add Job</string>
+    <string name="sync_job">Sync Jobs</string>
+    <string name="connect_error">Not Connected</string>
+    <string name="add_header">Add Job</string>
+    <string name="enter_date">Enter Date</string>
+    <string name="enter_farmer">Enter Farmer</string>
+    <string name="enter_field">Enter Field</string>
+    <string name="enter_product">Enter Product</string>
+    <string name="enter_acres">Enter Acres</string>
+    <string name="button_add_text">Add</string>
+    <array name="list_of_products">
+        <item>Calcitic Lime</item>
+        <item>Dolomitic Lime</item>
+        <item>Fertilizer</item>
+        <item>Wheat</item>
+    </array>
+</resources>
