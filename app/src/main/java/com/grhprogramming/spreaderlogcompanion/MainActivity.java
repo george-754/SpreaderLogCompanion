@@ -1,10 +1,7 @@
 package com.grhprogramming.spreaderlogcompanion;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -14,8 +11,6 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
 
@@ -27,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     //Declarations for the list of jobs in the que
     ArrayList<DataModel> dataModels;
     ListView listView;
-    private static CustomAdapter adapter;
+    private CustomAdapter adapter;
     private TextView empty_list;
 
     @Override
@@ -42,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         empty_list = findViewById(R.id.list_empty);
 
         // For list of jobs in que
-        listView = (ListView) findViewById(R.id.list);
+        listView = findViewById(R.id.list);
 
         dataModels = new ArrayList<DataModel>();
 
