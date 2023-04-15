@@ -38,6 +38,7 @@ public class SyncData extends AppCompatActivity {
     private TextView txtCount;
     private DbHandler db;
     private Integer dataIndex;
+    ArrayList<DataModel> dataList;
     // private ProgressBar progressBar;
     // private ProgressDialog progressDialog;
 
@@ -127,25 +128,35 @@ public class SyncData extends AppCompatActivity {
 //                progressDialog.setCancelable(false);
 
                 // Add code to sync data to the spreader log web app
-                OkHttpClient okHttpClient1 = new OkHttpClient();
-                DataModel dataModel;
+                dataList = new ArrayList<DataModel>();
+                dataList = db.getAll();
 
-                while (db.getQueryCount() > 0) {
-                    Log.i("TESTING", "Query Count: " + db.getQueryCount());
+                OkHttpClient okHttpClient1 = new OkHttpClient();
+                // DataModel dataModel;
+
+                for (int x = 0; x < dataList.size(); x++) {
+                    /*Log.i("TESTING", "Query Count: " + db.getQueryCount());
                     Log.i("TESTING", "Loop");
-                    dataModel = db.getFirst();
-                    Log.i("TESTING", "Name: " + dataModel.getFarmer());
-                    dataIndex = Integer.parseInt(dataModel.getId());
-                    Log.i("TESTING", "Data Index: " + dataIndex);
+                    // dataModel = db.getFirst();
+                    Log.i("TESTING", "Name: " + dataList.get(x).getFarmer());
+                    Log.i("TESTING", "Date: " + dataList.get(x).getDate());
+                    Log.i("TESTING", "Field: " + dataList.get(x).getField());
+                    Log.i("TESTING", "Product: " + dataList.get(x).getProduct());
+                    Log.i("TESTING", "Acres: " + dataList.get(x).getAcres());
+                    dataIndex = Integer.parseInt(dataList.get(x).getId());
+                    Log.i("TESTING", "Data Index: " + dataIndex);*/
+
+                    // Get the id of the data record and store it to be used later to delete the record
+                    dataIndex = Integer.parseInt(dataList.get(x).getId());
 
                     RequestBody formbody
                             = new FormBody.Builder()
                             .add("rUser", "y0dTzZ0zvm3GdunSdtjvlA")
-                            .add("rDate", dataModel.getDate())
-                            .add("rFarmer", dataModel.getFarmer())
-                            .add("rField", dataModel.getField())
-                            .add("rProduct", dataModel.getProduct())
-                            .add("rAcres", dataModel.getAcres())
+                            .add("rDate", dataList.get(x).getDate())
+                            .add("rFarmer", dataList.get(x).getFarmer())
+                            .add("rField", dataList.get(x).getField())
+                            .add("rProduct", dataList.get(x).getProduct())
+                            .add("rAcres", dataList.get(x).getAcres())
                             .build();
 
                     Request request1 = new Request.Builder().url("https://georgehopkins25.pythonanywhere.com/companion")
@@ -179,8 +190,15 @@ public class SyncData extends AppCompatActivity {
                                 db.DeleteJob(dataIndex);
                                 Log.i("TESTING", "Deleted Job!");
 
-                            } else if (response.body().string().equals("error")) {
+                            } else {
+                                call.cancel();
                                 Log.i("TESTING", "Companion Error!");
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        Toast.makeText(getApplicationContext(), "Invalid api key.", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
                             }
                         }
                     });
@@ -267,3 +285,4 @@ public class SyncData extends AppCompatActivity {
 }
 
 // TODO: Display spinner when processing requests
+// TODO: Add user page that lets the user enter in their api key and then store it in prefs
