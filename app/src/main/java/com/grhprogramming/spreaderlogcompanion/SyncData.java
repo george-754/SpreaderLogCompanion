@@ -140,7 +140,7 @@ public class SyncData extends AppCompatActivity {
 
                     RequestBody formbody
                             = new FormBody.Builder()
-                            .add("rUser", "17469GRH")
+                            .add("rUser", "y0dTzZ0zvm3GdunSdtjvlA")
                             .add("rDate", dataModel.getDate())
                             .add("rFarmer", dataModel.getFarmer())
                             .add("rField", dataModel.getField())
