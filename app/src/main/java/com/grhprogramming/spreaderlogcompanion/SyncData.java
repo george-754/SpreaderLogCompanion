@@ -12,7 +12,12 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
+import java.util.ArrayList;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -22,11 +27,13 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
+import okhttp3.ResponseBody;
 
 public class SyncData extends AppCompatActivity {
 
     private TextView txtConnection;
     private Button btnSync;
+    private Button btnUpdate;
     private String connection;
     private TextView txtCount;
     private DbHandler db;
@@ -46,6 +53,7 @@ public class SyncData extends AppCompatActivity {
         // Initialize activity elements
         txtConnection = findViewById(R.id.text_connection);
         btnSync = findViewById(R.id.button_sync);
+        btnUpdate = findViewById(R.id.button_update);
         txtCount = findViewById(R.id.text_count_label);
         // progressBar = (ProgressBar) findViewById(R.id.indeterminateBar);
 
@@ -72,6 +80,7 @@ public class SyncData extends AppCompatActivity {
                 .build();
 
         // Make call asynchronously
+        // Get Request to see if we can connect to the server
         okHttpClient.newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(@NonNull Call call, @NonNull IOException e) {
@@ -187,6 +196,71 @@ public class SyncData extends AppCompatActivity {
                 // Reload sync data view
                 finish();
                 startActivity(getIntent());
+            }
+        });
+
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ArrayList<String> farmers_list = new ArrayList<>();
+                ArrayList<String> products_list = new ArrayList<>();
+
+                OkHttpClient client = new OkHttpClient();
+
+                Request request1 = new Request.Builder()
+                        .url("https://georgehopkins25.pythonanywhere.com/companion/sync")
+                        .build();
+
+                client.newCall(request1).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(@NonNull Call call, @NonNull IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onResponse(@NonNull Call call, @NonNull Response response) throws IOException {
+                        try (ResponseBody responseBody = response.body()) {
+                            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+
+                            try {
+                                JSONObject obj = new JSONObject(response.body().string());
+                                // Get farmers data
+                                JSONArray farmersArray = obj.getJSONArray("grouped_farmers");
+                                // Get products data
+                                JSONArray productsArray = obj.getJSONArray("grouped_products");
+
+                                // Loop through jsonarray farmers and add to the farmers list
+                                for (int i = 0; i < farmersArray.length(); i++) {
+                                    farmers_list.add(farmersArray.getString(i));
+                                }
+
+                                // Loop though the jsonarray products and add to the products list
+                                for (int x = 0; x < productsArray.length(); x++) {
+                                    products_list.add(productsArray.getString(x));
+                                }
+
+                            } catch (JSONException e) {
+                                throw new RuntimeException(e);
+                            } catch (IOException e) {
+                                throw new RuntimeException(e);
+                            }
+
+                            // Store both lists in preferences using tinyDB
+                            TinyDB tinyDB = new TinyDB(getApplicationContext());
+
+                            tinyDB.putListString("groupedFarmers", farmers_list);
+                            tinyDB.putListString("groupedProducts", products_list);
+
+                            for (int z = 0; z < farmers_list.size(); z++) {
+                                Log.d("FARMER_LIST", farmers_list.get(z).toString());
+                            }
+
+                            for (int y = 0; y < products_list.size(); y++) {
+                                Log.d("Products_List", products_list.get(y).toString());
+                            }
+                        }
+                    }
+                });
             }
         });
     }

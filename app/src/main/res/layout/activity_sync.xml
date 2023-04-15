@@ -65,7 +65,7 @@
         android:id="@+id/button_sync"
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:text="Sync Data"
+        android:text="Sync Jobs"
         android:textSize="18sp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
@@ -73,6 +73,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_count_label" />
+
+    <Button
+        android:id="@+id/button_update"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:text="Sync Data"
+        android:textSize="18sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/button_sync" />
 
 
     <!--<ProgressBar

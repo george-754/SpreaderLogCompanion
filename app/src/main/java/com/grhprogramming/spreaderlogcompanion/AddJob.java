@@ -3,6 +3,7 @@ package com.grhprogramming.spreaderlogcompanion;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -21,7 +23,7 @@ import java.util.Date;
 public class AddJob extends AppCompatActivity {
 
     private EditText txtDate;
-    private EditText txtFarmer;
+    private AutoCompleteTextView txtFarmer;
     private EditText txtField;
     private AutoCompleteTextView txtProduct;
     private EditText txtAcres;
@@ -69,8 +71,18 @@ public class AddJob extends AppCompatActivity {
             }
         });
 
+        TinyDB tinyDB = new TinyDB(getApplicationContext());
         // Product edit text box suggestions
-        String[] products = getResources().getStringArray(R.array.list_of_products);
+        // String[] products = getResources().getStringArray(R.array.list_of_products);
+        // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, products);
+
+        // Array list for suggestions on the farmer text box
+        ArrayList<String> farmers = tinyDB.getListString("groupedFarmers");
+        ArrayAdapter<String> f_adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, farmers);
+        txtFarmer.setAdapter(f_adapter);
+
+        // Array list for suggestions on the products text box
+        ArrayList<String> products = tinyDB.getListString("groupedProducts");
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, products);
         txtProduct.setAdapter(adapter);
 
