@@ -3,7 +3,6 @@ package com.grhprogramming.spreaderlogcompanion;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -12,12 +11,10 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.StringRes;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
 
 
 public class AddJob extends AppCompatActivity {
@@ -27,7 +24,6 @@ public class AddJob extends AppCompatActivity {
     private EditText txtField;
     private AutoCompleteTextView txtProduct;
     private EditText txtAcres;
-    private Button btnAdd;
 
     private DbHandler db;
 
@@ -36,6 +32,7 @@ public class AddJob extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
 
+        Button btnAdd;
         // Add back button to the navigation bar to go back to the main screen
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.add_job);

@@ -13,7 +13,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="20dp"
         android:layout_marginHorizontal="20dp"
-        android:text="Add Job"
+        android:text="@string/add_job"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/main_sync_button"
         android:layout_width="320dp"
         android:layout_height="56dp"
-        android:text="Sync Jobs"
+        android:text="@string/sync_job"
         android:textSize="18sp"
         android:layout_marginTop="10dp"
         android:layout_marginHorizontal="20dp"
@@ -33,7 +33,7 @@
 
     <Button
         android:id="@+id/btnUserSettings"
-        android:text="User Settings"
+        android:text="@string/user_profile"
         android:textSize="18sp"
         android:layout_width="320dp"
         android:layout_height="56dp"
@@ -45,7 +45,7 @@
 
     <TextView
         android:id="@+id/que_text"
-        android:text="Jobs In Que"
+        android:text="@string/lblJobsQue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAlignment="center"
@@ -69,7 +69,7 @@
 
     <TextView
         android:id="@+id/list_empty"
-        android:text="No jobs in que."
+        android:text="@string/lbl_no_jobs"
         android:textSize="18sp"
         android:textColor="@color/text_color"
         android:layout_width="match_parent"

@@ -2,7 +2,15 @@
     <string name="app_name">Spreader Log (Companion)</string>
     <string name="add_job">Add Job</string>
     <string name="sync_job">Sync Jobs</string>
-    <string name="user_profile">User Profile</string>
+    <string name="user_profile">User Settings</string>
+    <string name="lbl_no_jobs">No jobs in que.</string>
+    <string name="lblApi">User Key:</string>
+    <string name="txtApiHint">Enter API Key</string>
+    <string name="btnApiSave">Save</string>
+    <string name="lblStatus">Server Status:</string>
+    <string name="lblJobsQue">Jobs In Que:</string>
+    <string name="btn_sync_jobs">Sync Jobs</string>
+    <string name="btn_sync_data">Sync Data</string>
     <string name="connect_error">Not Connected</string>
     <string name="add_header">Add Job</string>
     <string name="enter_date">Enter Date</string>

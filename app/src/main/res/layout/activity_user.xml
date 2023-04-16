@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/api_label"
-        android:text="User Key:"
+        android:text="@string/lblApi"
         android:textColor="@color/text_color"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -26,11 +26,15 @@
         android:textSize="18sp"
         android:textColor="@color/text_color"
         android:textColorHint="#80000000"
-        android:hint="Enter API Key"
+        android:hint="@string/txtApiHint"
+        android:importantForAutofill="no"
+        android:inputType="text"
         android:layout_marginHorizontal="20dp"
         android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="48dp"
+        android:minWidth="375dp"
+        android:maxWidth="488dp"
         android:padding="10dp"
         android:background="@drawable/edit_text_style"
         app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +43,7 @@
 
     <Button
         android:id="@+id/btnSaveApi"
-        android:text="Save"
+        android:text="@string/btnApiSave"
         android:textSize="18sp"
         android:layout_width="320dp"
         android:layout_height="56dp"
