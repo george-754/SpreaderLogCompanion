@@ -39,6 +39,8 @@ public class SyncData extends AppCompatActivity {
     private DbHandler db;
     private Integer dataIndex;
     ArrayList<DataModel> dataList;
+
+    private TinyDB tinyDB;
     // private ProgressBar progressBar;
     // private ProgressDialog progressDialog;
 
@@ -58,6 +60,8 @@ public class SyncData extends AppCompatActivity {
         txtCount = findViewById(R.id.text_count_label);
         // progressBar = (ProgressBar) findViewById(R.id.indeterminateBar);
 
+        // Use tiny db to store and retrieve prefs
+        tinyDB = new TinyDB(getApplicationContext());
 
         // Display the query count
         db = new DbHandler(this);
@@ -134,6 +138,9 @@ public class SyncData extends AppCompatActivity {
                 OkHttpClient okHttpClient1 = new OkHttpClient();
                 // DataModel dataModel;
 
+                // Retrieve api key from user preferences
+                String userKey = tinyDB.getString("user_key");
+
                 for (int x = 0; x < dataList.size(); x++) {
                     /*Log.i("TESTING", "Query Count: " + db.getQueryCount());
                     Log.i("TESTING", "Loop");
@@ -151,7 +158,7 @@ public class SyncData extends AppCompatActivity {
 
                     RequestBody formbody
                             = new FormBody.Builder()
-                            .add("rUser", "y0dTzZ0zvm3GdunSdtjvlA")
+                            .add("rUser", userKey)
                             .add("rDate", dataList.get(x).getDate())
                             .add("rFarmer", dataList.get(x).getFarmer())
                             .add("rField", dataList.get(x).getField())
@@ -263,9 +270,7 @@ public class SyncData extends AppCompatActivity {
                                 throw new RuntimeException(e);
                             }
 
-                            // Store both lists in preferences using tinyDB
-                            TinyDB tinyDB = new TinyDB(getApplicationContext());
-
+                            // Store farmers list and products lists in prefs for suggestions in the text box
                             tinyDB.putListString("groupedFarmers", farmers_list);
                             tinyDB.putListString("groupedProducts", products_list);
 

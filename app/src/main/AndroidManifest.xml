@@ -26,6 +26,8 @@
             android:parentActivityName=".MainActivity"/>
         <activity android:name=".SyncData"
             android:parentActivityName=".MainActivity" />
+        <activity android:name=".UserProfile"
+            android:parentActivityName=".MainActivity" />
     </application>
 
 </manifest>

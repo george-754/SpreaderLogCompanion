@@ -10,26 +10,38 @@
     <Button
         android:id="@+id/main_add_button"
         android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
         android:text="Add Job"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/main_sync_button"
         android:layout_width="320dp"
-        android:layout_height="wrap_content"
+        android:layout_height="56dp"
         android:text="Sync Jobs"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/main_add_button"
-        app:layout_constraintVertical_bias="0.01" />
+        app:layout_constraintTop_toBottomOf="@id/main_add_button" />
+
+    <Button
+        android:id="@+id/btnUserSettings"
+        android:text="User Settings"
+        android:textSize="18sp"
+        android:layout_width="320dp"
+        android:layout_height="56dp"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_sync_button"/>
 
     <TextView
         android:id="@+id/que_text"
@@ -41,7 +53,7 @@
         android:textStyle="bold"
         android:textColor="@color/black"
         android:layout_marginTop="20dp"
-        app:layout_constraintTop_toBottomOf="@id/main_sync_button"
+        app:layout_constraintTop_toBottomOf="@id/btnUserSettings"
         app:layout_constraintBottom_toTopOf="@id/line_break"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"/>
@@ -76,6 +88,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintVertical_bias="0">
 
         <ListView

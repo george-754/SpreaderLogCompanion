@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button btnAdd;
     private Button btnSync;
+    private Button btnUser;
 
     //Declarations for the list of jobs in the que
     ArrayList<DataModel> dataModels;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         btnAdd = findViewById(R.id.main_add_button);
         btnSync = findViewById(R.id.main_sync_button);
+        btnUser = findViewById(R.id.btnUserSettings);
 
         // Text for empty list
         empty_list = findViewById(R.id.list_empty);
@@ -103,6 +105,14 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intSyncJobs = new Intent(view.getContext(), SyncData.class);
                 startActivity(intSyncJobs);
+            }
+        });
+
+        btnUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intUserSettings = new Intent(view.getContext(), UserProfile.class);
+                startActivity(intUserSettings);
             }
         });
     }
