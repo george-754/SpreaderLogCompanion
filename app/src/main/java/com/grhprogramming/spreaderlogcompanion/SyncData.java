@@ -290,4 +290,3 @@ public class SyncData extends AppCompatActivity {
 }
 
 // TODO: Display spinner when processing requests
-// TODO: Add user page that lets the user enter in their api key and then store it in prefs

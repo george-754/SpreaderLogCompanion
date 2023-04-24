@@ -128,5 +128,3 @@ public class MainActivity extends AppCompatActivity {
         startActivity(getIntent());
     }
 }
-
-// TODO: Change theme colors. Dialog box to delete job has red writing. That needs to be a grey color
