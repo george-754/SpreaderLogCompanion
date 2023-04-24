@@ -12,6 +12,10 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.chuckerteam.chucker.api.ChuckerCollector;
+import com.chuckerteam.chucker.api.ChuckerInterceptor;
+import com.chuckerteam.chucker.api.RetentionManager;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -118,6 +122,14 @@ public class SyncData extends AppCompatActivity {
             }
         });
 
+        // Create Chucker Collector
+        ChuckerCollector chuckerCollector = new ChuckerCollector(this, true, RetentionManager.Period.ONE_HOUR);
+
+        // Create Chucker Interceptor
+        ChuckerInterceptor chuckerInterceptor = new ChuckerInterceptor.Builder(this)
+                .collector(chuckerCollector)
+                .build();
+
         btnSync.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,7 +147,10 @@ public class SyncData extends AppCompatActivity {
                 dataList = new ArrayList<DataModel>();
                 dataList = db.getAll();
 
-                OkHttpClient okHttpClient1 = new OkHttpClient();
+                // Create OkHttpClient with interceptor
+                OkHttpClient okHttpClient1 = new OkHttpClient.Builder()
+                        .addInterceptor(chuckerInterceptor)
+                        .build();
                 // DataModel dataModel;
 
                 // Retrieve api key from user preferences
