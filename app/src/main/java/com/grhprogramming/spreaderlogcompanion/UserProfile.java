@@ -8,10 +8,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 public class UserProfile extends AppCompatActivity {
 
     private Button btnSave;
-    private EditText editKey;
+    private TextInputLayout editKey;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +32,13 @@ public class UserProfile extends AppCompatActivity {
         TinyDB tinyDB = new TinyDB(getApplicationContext());
 
         // Load user key into edit text box when page is loaded
-        editKey.setText(tinyDB.getString("user_key"));
+        editKey.getEditText().setText(tinyDB.getString("user_key"));
 
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Save key to user prefs
-                tinyDB.putString("user_key", editKey.getText().toString());
+                tinyDB.putString("user_key", editKey.getEditText().getText().toString());
 
                 runOnUiThread(new Runnable() {
                     @Override

@@ -19,6 +19,7 @@
     <string name="enter_product">Enter Product</string>
     <string name="enter_acres">Enter Acres</string>
     <string name="button_add_text">Add</string>
+    <string name="date_picker_desc">Date picker.</string>
     <array name="list_of_products">
         <item>Calcitic Lime</item>
         <item>Dolomitic Lime</item>
