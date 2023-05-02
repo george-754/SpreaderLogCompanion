@@ -1,25 +1,19 @@
 package com.grhprogramming.spreaderlogcompanion;
 
-import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.textfield.MaterialAutoCompleteTextView;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 
 public class AddJob extends AppCompatActivity {
@@ -77,26 +71,24 @@ public class AddJob extends AppCompatActivity {
                     AddJob.this, (datePicker, year1, monthofyear, dayofmonth) -> txtDate.getEditText().setText((monthofyear + 1) + "/" + dayofmonth + "/" + year1), year, month, day);
             datePickerDialog.show();
         });*/
-        txtDate.setEndIconOnClickListener(v -> {
-            dPicker.show(getSupportFragmentManager(), "tag");
+        txtDate.setEndIconOnClickListener(v -> dPicker.show(getSupportFragmentManager(), "tag"));
 
-            dPicker.addOnPositiveButtonClickListener(nv -> {
-                // Get the current date time
-                final Calendar c = Calendar.getInstance();
+        dPicker.addOnPositiveButtonClickListener(nv -> {
+            // Get the current date time
+            final Calendar c = Calendar.getInstance();
 
-                // Set the c calendar date to the selected date pickers date
-                c.setTimeInMillis(Long.parseLong(dPicker.getSelection().toString()));
+            // Set the c calendar date to the selected date pickers date
+            c.setTimeInMillis(Long.parseLong(dPicker.getSelection().toString()));
 
-                // Add 1 day to the date
-                c.add(Calendar.DAY_OF_MONTH, 1);
+            // Add 1 day to the date
+            c.add(Calendar.DAY_OF_MONTH, 1);
 
-                // String to be displayed in the date text box
-                String a_date = String.format("%s/%s/%s", c_month[c.get(Calendar.MONTH)], c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.YEAR));
+            // String to be displayed in the date text box
+            String a_date = String.format("%s/%s/%s", c_month[c.get(Calendar.MONTH)], c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.YEAR));
 
-                // Set the text box with the currently selected date from the date pickers selection
-                // txtDate.getEditText().setText((c.get(Calendar.MONTH)) + "/" + (c.get(Calendar.DAY_OF_MONTH)) + "/" + c.get(Calendar.YEAR));
-                txtDate.getEditText().setText(a_date);
-            });
+            // Set the text box with the currently selected date from the date pickers selection
+            // txtDate.getEditText().setText((c.get(Calendar.MONTH)) + "/" + (c.get(Calendar.DAY_OF_MONTH)) + "/" + c.get(Calendar.YEAR));
+            txtDate.getEditText().setText(a_date);
         });
 
         TinyDB tinyDB = new TinyDB(getApplicationContext());
