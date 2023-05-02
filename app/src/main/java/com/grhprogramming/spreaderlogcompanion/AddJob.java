@@ -19,6 +19,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class AddJob extends AppCompatActivity {
@@ -49,6 +50,9 @@ public class AddJob extends AppCompatActivity {
         txtAcres = findViewById(R.id.acres_text);
 
         btnAdd = findViewById(R.id.add_button);
+
+        // Month defines. 0 = 1 for January and so forth
+        String[] c_month = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"};
 
         // Initialize the material design date picker object
         dPicker = new MaterialDatePicker();
@@ -83,8 +87,15 @@ public class AddJob extends AppCompatActivity {
                 // Set the c calendar date to the selected date pickers date
                 c.setTimeInMillis(Long.parseLong(dPicker.getSelection().toString()));
 
+                // Add 1 day to the date
+                c.add(Calendar.DAY_OF_MONTH, 1);
+
+                // String to be displayed in the date text box
+                String a_date = String.format("%s/%s/%s", c_month[c.get(Calendar.MONTH)], c.get(Calendar.DAY_OF_MONTH), c.get(Calendar.YEAR));
+
                 // Set the text box with the currently selected date from the date pickers selection
-                txtDate.getEditText().setText((c.get(Calendar.MONTH) + 1) + "/" + (c.get(Calendar.DAY_OF_MONTH) + 1) + "/" + c.get(Calendar.YEAR));
+                // txtDate.getEditText().setText((c.get(Calendar.MONTH)) + "/" + (c.get(Calendar.DAY_OF_MONTH)) + "/" + c.get(Calendar.YEAR));
+                txtDate.getEditText().setText(a_date);
             });
         });
 
