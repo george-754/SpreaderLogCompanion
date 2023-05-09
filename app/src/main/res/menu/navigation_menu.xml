@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <item
+        android:id="@+id/nav_overview"
+        android:title="Overview" />
+
+    <item
+        android:id="@+id/nav_add"
+        android:title="Add Job" />
+
+    <item
+        android:id="@+id/nav_sync"
+        android:title="Sync Jobs" />
+
+</menu>
