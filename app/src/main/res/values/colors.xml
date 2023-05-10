@@ -63,6 +63,7 @@
     <color name="md_theme_dark_scrim">#000000</color>
     <color name="dark_red">#550000</color>
     <color name="light_red">#800000</color>
+    <color name="button_red">#40FF0101</color>
     <color name="dark_yellow">#FFCC00</color>
     <color name="dark_white">#F2F2F2</color>
     <color name="light_grey">#bbbbbb</color>
