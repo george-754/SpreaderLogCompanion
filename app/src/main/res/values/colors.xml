@@ -66,5 +66,6 @@
     <color name="dark_yellow">#FFCC00</color>
     <color name="dark_white">#F2F2F2</color>
     <color name="light_grey">#bbbbbb</color>
+    <color name="dark_grey">#222222</color>
 
 </resources>

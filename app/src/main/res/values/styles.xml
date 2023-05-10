@@ -2,6 +2,7 @@
 <resources>
     <style name="Theme.App" parent="Theme.Material3.DayNight">
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
     </style>
 
     <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar">
@@ -14,6 +15,20 @@
         <item name="shapeAppearanceMediumComponent">@style/ShapeAppearance.Material3.MediumComponent</item>
         <!-- Customize text field of the text input mode. -->
         <item name="textInputStyle">@style/Widget.Material3.TextInputLayout.OutlinedBox</item>
+    </style>
+
+    <!-- Alert Dialog Style -->
+    <style name="ThemeOverlay.App.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorPrimary">@color/light_grey</item>
+        <item name="colorOnPrimary">@color/light_red</item>
+        <item name="colorSecondary">@color/dark_yellow</item>
+        <item name="colorOnSurfaceVariant">@color/dark_grey</item>
+        <item name="colorSurface">@color/light_grey</item>
+        <item name="colorOnSurface">@color/dark_red</item>
+        <item name="alertDialogStyle">@style/MaterialAlertDialog.Material3</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.Material3.Title.Text</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Material3.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Material3.Button</item>
     </style>
 
 </resources>

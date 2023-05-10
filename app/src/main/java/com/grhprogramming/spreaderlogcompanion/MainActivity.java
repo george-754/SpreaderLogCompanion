@@ -20,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toolbar;
 
 import com.google.android.material.appbar.MaterialToolbar;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.ArrayList;
 
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
                 public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                     DataModel dataModel = dataModels.get(position);
                     // Snackbar.make(view, "Job Id: " + dataModel.getId(), Snackbar.LENGTH_LONG).setAction("No action", null).show();
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(MainActivity.this, R.style.ThemeOverlay_App_MaterialAlertDialog);
                     builder.setTitle("Delete Job!");
                     builder.setMessage("Are you sure you want to delete this job?");
 
@@ -87,8 +88,9 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
                     builder.setNegativeButton("No", null);
-                    AlertDialog dialog= builder.create();
-                    dialog.show();
+                    builder.show();
+                    // AlertDialog dialog= builder.create();
+                    // dialog.show();
 
                     return false;
                 }
