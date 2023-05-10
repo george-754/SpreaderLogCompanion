@@ -1,6 +1,8 @@
 package com.grhprogramming.spreaderlogcompanion;
 
 import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.chuckerteam.chucker.api.ChuckerCollector;
@@ -53,7 +56,13 @@ public class SyncData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sync);
 
-        // Add Back button to the navigation bar to go back to the main screen
+        // Action bar color and title and Add Back button to the navigation bar to go back to the main screen
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#800000"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.sync_job);
 

@@ -198,6 +198,7 @@
         android:layout_height="56dp"
         android:text="@string/button_add_text"
         android:textSize="18sp"
+        android:textColor="@color/light_grey"
         android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

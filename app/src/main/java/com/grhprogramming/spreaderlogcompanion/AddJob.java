@@ -1,12 +1,15 @@
 package com.grhprogramming.spreaderlogcompanion;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -33,7 +36,14 @@ public class AddJob extends AppCompatActivity {
         setContentView(R.layout.activity_add);
 
         Button btnAdd;
-        // Add back button to the navigation bar to go back to the main screen
+
+        // Add back button to the navigation bar to go back to the main screen and set color and title
+        ActionBar actionBar;
+        actionBar = getSupportActionBar();
+
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#800000"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle(R.string.add_job);
 
@@ -54,6 +64,7 @@ public class AddJob extends AppCompatActivity {
         // Build the Material design date picker with a title and have the current date selected by default
         dPicker = MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select date")
+                .setTheme(R.style.ThemeOverlay_App_DatePicker)
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .build();
 

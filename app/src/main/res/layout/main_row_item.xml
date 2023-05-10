@@ -11,6 +11,7 @@
     android:layout_marginVertical="8dp"
     android:longClickable="true">
 
+
     <TextView
         android:id="@+id/row_id"
         android:layout_width="wrap_content"
@@ -27,7 +28,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Date"
-        android:textAppearance="@style/TextAppearance.Material3.LabelSmall"/>
+        android:textColor="@color/light_grey"
+        android:textAppearance="@style/TextAppearance.Material3.BodySmall"/>
 
     <TextView
         android:id="@+id/row_farmer"
@@ -37,6 +39,7 @@
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="5dp"
         android:text="Farmer Brown"
+        android:textColor="@color/light_grey"
         android:textStyle="bold" />
 
     <TextView
@@ -46,7 +49,8 @@
         app:layout_constraintTop_toBottomOf="@id/row_farmer"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="5dp"
-        android:text="Home Field" />
+        android:text="Home Field"
+        android:textColor="@color/light_grey"/>
 
     <TextView
         android:id="@+id/row_acres"
@@ -57,7 +61,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:flow_verticalAlign="center"
-        android:text="147" />
+        android:text="147"
+        android:textColor="@color/light_grey"/>
 
 
 
@@ -74,7 +79,8 @@
             android:id="@+id/row_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Calcitic Lime" />
+            android:text="Calcitic Lime"
+            android:textColor="@color/light_grey"/>
 
 
     </LinearLayout>
