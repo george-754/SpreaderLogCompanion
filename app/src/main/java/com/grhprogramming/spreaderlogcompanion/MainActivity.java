@@ -18,10 +18,6 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnAdd;
-    private Button btnSync;
-    private Button btnUser;
-
     //Declarations for the list of jobs in the que
     ArrayList<DataModel> dataModels;
     ListView listView;
@@ -33,9 +29,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnAdd = findViewById(R.id.main_add_button);
-        btnSync = findViewById(R.id.main_sync_button);
-        btnUser = findViewById(R.id.btnUserSettings);
+        // Set the title on the action bar
+        getSupportActionBar().setTitle("Overview");
 
         // Text for empty list
         empty_list = findViewById(R.id.list_empty);
@@ -93,30 +88,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         // End List
-
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intAddJob = new Intent(view.getContext(), AddJob.class);
-                startActivity(intAddJob);
-            }
-        });
-
-        btnSync.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intSyncJobs = new Intent(view.getContext(), SyncData.class);
-                startActivity(intSyncJobs);
-            }
-        });
-
-        btnUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intUserSettings = new Intent(view.getContext(), UserProfile.class);
-                startActivity(intUserSettings);
-            }
-        });
     }
 
     public void refreshHome() {
@@ -129,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
         startActivity(getIntent());
     }
-
+    // Set the menu items on the action bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.navigation_menu, menu);
