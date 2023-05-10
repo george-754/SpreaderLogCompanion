@@ -6,6 +6,8 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -127,4 +129,32 @@ public class MainActivity extends AppCompatActivity {
         finish();
         startActivity(getIntent());
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.navigation_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.nav_add:
+                Intent iAdd = new Intent(this, AddJob.class);
+                startActivity(iAdd);
+                return true;
+
+            case R.id.nav_sync:
+                Intent iSync = new Intent(this, SyncData.class);
+                startActivity(iSync);
+                return true;
+
+            case R.id.nav_settings:
+                Intent iSettings = new Intent(this, UserProfile.class);
+                startActivity(iSettings);
+                return true;
+        }
+        return(super.onOptionsItemSelected(item));
+    }
+
 }
