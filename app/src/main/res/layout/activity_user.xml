@@ -62,6 +62,7 @@
         android:text="@string/btnApiSave"
         android:textSize="18sp"
         android:textColor="@color/light_grey"
+        style="@style/Widget.App.Button"
         android:layout_width="320dp"
         android:layout_height="56dp"
         android:layout_marginTop="20dp"

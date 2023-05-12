@@ -3,6 +3,7 @@
     <style name="Theme.App" parent="Theme.Material3.DayNight">
         <item name="materialCalendarTheme">@style/ThemeOverlay.App.DatePicker</item>
         <item name="materialAlertDialogTheme">@style/ThemeOverlay.App.MaterialAlertDialog</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button</item>
     </style>
 
     <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.Material3.MaterialCalendar">
@@ -29,6 +30,16 @@
         <item name="materialAlertDialogTitleTextStyle">@style/MaterialAlertDialog.Material3.Title.Text</item>
         <item name="buttonBarPositiveButtonStyle">@style/Widget.Material3.Button</item>
         <item name="buttonBarNegativeButtonStyle">@style/Widget.Material3.Button</item>
+    </style>
+
+    <!-- Button style -->
+    <style name="Widget.App.Button" parent="Widget.Material3.Button">
+        <item name="shapeAppearance">@style/ShapeAppearance.App.SmallComponent</item>
+    </style>
+
+    <style name="ShapeAppearance.App.SmallComponent" parent="ShapeAppearance.Material3.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">4dp</item>
     </style>
 
 </resources>
